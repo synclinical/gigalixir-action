@@ -7,7 +7,7 @@ Note: This action has only been tested in one repo and has no unit tests.
 ## Usage
 
 ```yaml
-test: 
+test:
   # A job to run your tests, linters, etc
 
 deploy:
@@ -17,16 +17,16 @@ deploy:
   runs-on: ubuntu-latest
 
   steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         ref: main # Check out main instead of the latest commit
         fetch-depth: 0 # Checkout the whole branch
-        
-    - uses: actions/setup-python@v2
+
+    - uses: actions/setup-python@v5
       with:
-        python-version: 3.8.1
-        
-    - uses: mhanberg/gigalixir-action@<current release>
+        python-version: 3.13.1
+
+    - uses: thejaywhy/gigalixir-action@<current release>
       with:
         APP_SUBFOLDER: my-app-subfolder  # Add only if you want to deploy an app that is not at the root of your repository
         GIGALIXIR_APP: my-gigalixir-app # Feel free to also put this in your secrets
@@ -49,7 +49,7 @@ If your migrations fail, the action will rollback the app to the last version.
 
 ## Contributing
 
-Remember to 
+Remember to
 
 - `npm install`
 - `npm run package`
