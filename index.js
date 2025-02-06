@@ -79,14 +79,14 @@ function addExtraFlagCleanCache(gigalixirClean) {
 
 async function run() {
   try {
-    const appSubfolder = core.getInput('APP_SUBFOLDER', {required: false});
-    const gigalixirApp = core.getInput('GIGALIXIR_APP', {required: true});
-    const gigalixirClean = core.getInput('GIGALIXIR_CLEAN', {required: false});
-    const gigalixirUsername = core.getInput('GIGALIXIR_USERNAME', {required: true});
-    const gigalixirPassword = core.getInput('GIGALIXIR_PASSWORD', {required: true});
-    const maxRetryAttempts = Number(core.getInput('MAX_RETRY_ATTEMPTS', {required: false}));
-    const migrations = core.getInput('MIGRATIONS', {required: true});
-    const sshPrivateKey = core.getInput('SSH_PRIVATE_KEY', {required: JSON.parse(migrations)});
+    const appSubfolder = core.getInput('APP_SUBFOLDER', { required: false });
+    const gigalixirApp = core.getInput('GIGALIXIR_APP', { required: true });
+    const gigalixirClean = core.getInput('GIGALIXIR_CLEAN', { required: false });
+    const gigalixirUsername = core.getInput('GIGALIXIR_USERNAME', { required: true });
+    const gigalixirPassword = core.getInput('GIGALIXIR_PASSWORD', { required: true });
+    const maxRetryAttempts = Number(core.getInput('MAX_RETRY_ATTEMPTS', { required: false }));
+    const migrations = core.getInput('MIGRATIONS', { required: true });
+    const sshPrivateKey = core.getInput('SSH_PRIVATE_KEY', { required: JSON.parse(migrations) });
 
     await core.group("Installing gigalixir", async () => {
       await exec.exec('pip3 install gigalixir')
@@ -127,7 +127,7 @@ async function run() {
 
       try {
         await core.group("Running migrations", async () => {
-          await exec.exec(`gigalixir ps:migrate -a ${gigalixirApp}`)
+          await exec.exec(`gigalixir ps:migrate -o "-tt" -a ${gigalixirApp}`)
         });
       } catch (error) {
         if (currentRelease === 0) {
