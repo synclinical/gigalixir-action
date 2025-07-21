@@ -34,6 +34,7 @@ deploy:
         GIGALIXIR_USERNAME: ${{ secrets.GIGALIXIR_USERNAME }}
         GIGALIXIR_PASSWORD: ${{ secrets.GIGALIXIR_PASSWORD }} # Use GIGALIXIR_PASSWORD or GIGALIXIR_API_KEY
         GIGALIXIR_API_KEY: ${{ secrets.GIGALIXIR_API_KEY }} # Use GIGALIXIR_PASSWORD or GIGALIXIR_API_KEY
+        MAX_RETRY_ATTEMPTS: 10 # Max number of times to retry Gigalixir API calls. Retries happen every 10 seconds. The default is 60t 
         MIGRATIONS: false  # defaults to true
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 ```
