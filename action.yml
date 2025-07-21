@@ -1,33 +1,36 @@
-name: 'Gigalixir Action'
-description: 'Deploy to Gigalixir'
+name: "Gigalixir Action"
+description: "Deploy to Gigalixir"
 inputs:
   APP_SUBFOLDER:
-    description: 'Subfolder of your app'
+    description: "Subfolder of your app"
     required: false
   GIGALIXIR_APP:
-    description: 'Your gigalixir app name'
+    description: "Your gigalixir app name"
     required: true
   GIGALIXIR_CLEAN:
-    description: 'Extra flag you can pass to clean your cache before building'
+    description: "Extra flag you can pass to clean your cache before building"
     required: false
     default: false
   GIGALIXIR_USERNAME:
-    description: 'Your Gigalixir username'
+    description: "Your Gigalixir username"
     required: true
+  GIGALIXIR_API_KEY:
+    description: "Your Gigalixir API key -- either this option or GIGALIXIR_PASSWORD should be used"
+    required: false
   GIGALIXIR_PASSWORD:
-    description: 'Your Gigalixir password'
-    required: true
+    description: "Your Gigalixir password -- either this option or GIGALIXIR_API_KEY should be used"
+    required: false
   MAX_RETRY_ATTEMPTS:
-    description: 'Maximum number of request retry attempts when communicating with Gigalixir'
+    description: "Maximum number of request retry attempts when communicating with Gigalixir"
     default: "60"
   MIGRATIONS:
-    description: 'Configuration for migrations'
+    description: "Configuration for migrations"
     required: true
     default: true
   SSH_PRIVATE_KEY:
-    description: 'Your ssh private key that is paired with a public key that is uploaded to Gigalixir'
+    description: "Your ssh private key that is paired with a public key that is uploaded to Gigalixir"
     required: ${MIGRATIONS}
 
 runs:
-  using: 'node20'
-  main: 'dist/index.js'
+  using: "node20"
+  main: "dist/index.js"
