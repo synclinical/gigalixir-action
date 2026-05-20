@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.6.6
+
+- Update the GitHub Actions runtime from Node 20 to Node 24.
+
 ## v0.6.2
 
 - Handle boolean string again as to not always use GIGALIXIR_CLEAN header [#41](https://github.com/mhanberg/gigalixir-action/pull/41) by [Ian Young](https://github.com/iangreenleaf)
